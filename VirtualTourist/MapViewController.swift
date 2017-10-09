@@ -21,13 +21,6 @@ class MapViewController: BaseViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    private var stack: CoreDataStack {
-        get {
-            let app = UIApplication.shared.delegate as! AppDelegate
-            return app.stack
-        }
-    }
-    
     private var state = MapViewControllerState.add
     private var selectedLocation: Location!
     
@@ -46,11 +39,11 @@ class MapViewController: BaseViewController {
     }
     
     func showDeleteLabel() {
-        bottomLabelConstraint.constant = 65
+        bottomLabelConstraint.constant = 0
     }
     
     func hideDeleteLabel() {
-        bottomLabelConstraint.constant = 0
+        bottomLabelConstraint.constant = 65
     }
     
     @IBAction func editClick(sender: UIBarButtonItem!) {

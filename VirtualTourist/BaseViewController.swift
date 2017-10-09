@@ -8,20 +8,22 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class BaseViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    public var stack: CoreDataStack {
+        get {
+            let app = UIApplication.shared.delegate as! AppDelegate
+            return app.stack
+        }
     }
     
+    public var context: NSManagedObjectContext {
+        get {
+            return stack.context
+        }
+    }
 
 }
 
