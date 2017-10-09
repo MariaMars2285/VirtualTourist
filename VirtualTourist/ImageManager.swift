@@ -27,6 +27,7 @@ class ImageManager {
         }
     }
 
+    //Fetches the Flickr Images and converts the corresponding JSON to Image NSManagedObject
     func getFlickrImages(forLocation location: Location, completionHandler: @escaping ([Image]?, Error?) -> Void) {
         flickrAPI.searchByLocation(location: location) { (photoJSONs, error) in
             guard error == nil else {
@@ -57,6 +58,8 @@ class ImageManager {
         }
     }
     
+    
+    //Code based on Udacity Lectures. Downloads the image data corresponding to the image.
     func downloadImage(forImage image: Image) {
         // Get the URL for the image
         let url = image.url!

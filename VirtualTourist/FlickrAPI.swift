@@ -6,6 +6,8 @@
 //  Copyright © 2017 Maria . All rights reserved.
 //
 
+// Based on : https://github.com/udacity/ios-nd-networking/blob/master/FlickFinderComplete/FlickFinder/ViewController.swift
+
 import Foundation
 
 class FlickrAPI {

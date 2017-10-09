@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreData
 
+//Represents 2 states of the map view. Adding state when you can add pin and deleting state for delete pin.
 enum MapViewControllerState {
     case add
     case delete
@@ -46,6 +47,7 @@ class MapViewController: BaseViewController {
         bottomLabelConstraint.constant = 65
     }
     
+    // Checks the state and deletes/hide the delete label based on state.
     @IBAction func editClick(sender: UIBarButtonItem!) {
         if state == .add {
             state = .delete
@@ -59,6 +61,7 @@ class MapViewController: BaseViewController {
     
     }
     
+    // Adds Annotation based on Long press
     @IBAction func onMapViewLongPress(sender: UIGestureRecognizer!) {
         
         if sender.state == .recognized && state == .add {
@@ -74,6 +77,7 @@ class MapViewController: BaseViewController {
         }
     }
     
+    //Deletes Annotation from map as well as Core Data.
     func deleteAnnotation(_ annotation: Location) {
         mapView.removeAnnotation(annotation)
         stack.context.delete(annotation)

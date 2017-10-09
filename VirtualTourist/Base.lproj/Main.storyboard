@@ -146,10 +146,14 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UhZ-BI-NgD">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.6705882353" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kNC-bh-vkY"/>
                                 </constraints>
-                                <state key="normal" title="New Collection"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="New Collection">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="onNewCollectionClickWithSender:" destination="EkL-pa-YFq" eventType="touchUpInside" id="4aH-f1-Lkb"/>
                                 </connections>
@@ -172,6 +176,7 @@
                     <connections>
                         <outlet property="collectionView" destination="g6x-6w-XYj" id="ln7-06-3Iy"/>
                         <outlet property="mapView" destination="PxD-gT-gXi" id="k78-Tx-e67"/>
+                        <outlet property="newCollectionButton" destination="UhZ-BI-NgD" id="ENr-22-pAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6VP-LB-81p" userLabel="First Responder" sceneMemberID="firstResponder"/>

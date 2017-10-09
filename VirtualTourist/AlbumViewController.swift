@@ -17,12 +17,15 @@ class AlbumViewController: BaseViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var newCollectionButton: UIButton!
+    
     var location: Location!
     var imageManager = ImageManager()
     var insertedIndexPaths: [IndexPath]!
     var deletedIndexPaths : [IndexPath]!
     var updatedIndexPaths : [IndexPath]!
     
+    //Fetch Results Controller for images corresponding to the location.
     lazy var fetchedResultsController: NSFetchedResultsController = { () -> NSFetchedResultsController<Image> in
         let fetchRequest = NSFetchRequest<Image>(entityName: "Image")
         fetchRequest.predicate = NSPredicate(format: "location == %@", self.location)
@@ -34,6 +37,7 @@ class AlbumViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setting the region for the map.
         let span = MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: true)
@@ -53,17 +57,23 @@ class AlbumViewController: BaseViewController {
         self.collectionView.reloadData()
     }
     
+    //Fetches image URLs from Flickr
     func downloadLocationImages() {
         location.loaded = false
+        newCollectionButton.isEnabled = false
         imageManager.getFlickrImages(forLocation: location) { (images, error) in
+            self.newCollectionButton.isEnabled = true
             guard error == nil else {
-                print("Error")
+                self.showErrorAlert(title: "Error", message: "Error Downloading Images from Flickr!")
                 return
             }
             
             guard let images = images else {
-                print("Error")
+                self.showErrorAlert(title: "Error", message: "Error Downloading Images from Flickr!")
                 return
+            }
+            if images.count == 0 {
+                self.showErrorAlert(title: "No Image", message: "No Images for the current location!")
             }
             print(images)
             self.location.loaded = true
@@ -71,6 +81,7 @@ class AlbumViewController: BaseViewController {
        
     }
     
+    // Refreshes the images with new images from Flickr
     @IBAction func onNewCollectionClick(sender: UIButton!) {
         if let images = fetchedResultsController.fetchedObjects {
             for image in images {
@@ -78,7 +89,6 @@ class AlbumViewController: BaseViewController {
             }
         }
         downloadLocationImages()
-            
     }
 
 }
