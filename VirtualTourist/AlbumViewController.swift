@@ -9,21 +9,18 @@
 import UIKit
 import MapKit
 
-class AlbumViewController: UIViewController {
+class AlbumViewController: BaseViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    var coordinate: CLLocationCoordinate2D!
+    var location: Location!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let span = MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        self.mapView.setRegion(region, animated: true)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+        mapView.addAnnotation(location)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
 
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C04175E1F8B5660000FE505 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C04175D1F8B5660000FE505 /* BaseViewController.swift */; };
 		4C0EFB811F873AA600B2011C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EFB801F873AA600B2011C /* AppDelegate.swift */; };
 		4C0EFB861F873AA600B2011C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0EFB841F873AA600B2011C /* Main.storyboard */; };
 		4C0EFB891F873AA600B2011C /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EFB871F873AA600B2011C /* VirtualTourist.xcdatamodeld */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C04175D1F8B5660000FE505 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4C0EFB7D1F873AA600B2011C /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0EFB801F873AA600B2011C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C0EFB851F873AA600B2011C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				4C0EFB801F873AA600B2011C /* AppDelegate.swift */,
 				4C0EFB841F873AA600B2011C /* Main.storyboard */,
 				4C0EFB971F873D4300B2011C /* AlbumViewController.swift */,
+				4C04175D1F8B5660000FE505 /* BaseViewController.swift */,
 				4C0EFB8A1F873AA600B2011C /* Assets.xcassets */,
 				4C0EFB8C1F873AA600B2011C /* LaunchScreen.storyboard */,
 				4C0EFB8F1F873AA600B2011C /* Info.plist */,
@@ -156,6 +159,7 @@
 				4C0EFB9A1F87A11A00B2011C /* CoreDataStack.swift in Sources */,
 				4C0EFB981F873D4300B2011C /* AlbumViewController.swift in Sources */,
 				4C0EFB811F873AA600B2011C /* AppDelegate.swift in Sources */,
+				4C04175E1F8B5660000FE505 /* BaseViewController.swift in Sources */,
 				4C0EFB961F873BB600B2011C /* MapViewController.swift in Sources */,
 				4C0EFB891F873AA600B2011C /* VirtualTourist.xcdatamodeld in Sources */,
 			);

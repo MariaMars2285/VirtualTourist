@@ -15,7 +15,7 @@ enum MapViewControllerState {
     case delete
 }
 
-class MapViewController: UIViewController {
+class MapViewController: BaseViewController {
 
     @IBOutlet weak var bottomLabelConstraint: NSLayoutConstraint!
     
@@ -29,7 +29,7 @@ class MapViewController: UIViewController {
     }
     
     private var state = MapViewControllerState.add
-    private var selectedCoordinate: CLLocationCoordinate2D!
+    private var selectedLocation: Location!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,23 +88,14 @@ class MapViewController: UIViewController {
 
 }
 
-extension MapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        var view = mapView.dequeueReusableAnnotationView(withIdentifier: "PinAnnotation")
-        if view == nil {
-            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PinAnnotation")
-        } else {
-            view?.annotation = annotation
-        }
-        return view
-    }
+extension MapViewController {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let annotation = view.annotation as? Location {
             if state == .delete {
                deleteAnnotation(annotation)
             } else {
-                selectedCoordinate = annotation.coordinate
+                selectedLocation = annotation
                 self.performSegue(withIdentifier: "ShowDetail", sender: nil)
             }
         }
@@ -112,6 +103,6 @@ extension MapViewController: MKMapViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! AlbumViewController
-        vc.coordinate = selectedCoordinate
+        vc.location = selectedLocation
     }
 }
