@@ -1,5 +1,7 @@
 # Virtual Tourist Project
 
+## Instructions
+1. Please replace the APIKey in Constants.swift file.
 
 ### Code Attribution
 1. https://raw.githubusercontent.com/udacity/ios-nd-networking/master/FlickFinderComplete - For FlickrAPI.swift and Constants.swift 
