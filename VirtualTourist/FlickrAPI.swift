@@ -47,17 +47,6 @@ class FlickrAPI {
         
         // create network request
         let task = session.dataTask(with: request) { (data, response, error) in
-            
-            // if an error occurs, print it and re-enable the UI
-            /*func displayError(_ error: String) {
-                print(error)
-                performUIUpdatesOnMain {
-                    self.setUIEnabled(true)
-                    self.photoTitleLabel.text = "No photo returned. Try again."
-                    self.photoImageView.image = nil
-                }
-            }*/
-            
             /* GUARD: Was there an error? */
             guard (error == nil) else {
                 completionHandler(nil, error)
@@ -104,7 +93,7 @@ class FlickrAPI {
             }
             
             // pick a random page!
-            let pageLimit = min(totalPages, 40)
+            let pageLimit = min(totalPages, 133)
             let randomPage = Int(arc4random_uniform(UInt32(pageLimit))) + 1
             self.displayImageFromFlickrBySearch(methodParameters, withPageNumber: randomPage, completionHandler: completionHandler)
         }
@@ -114,14 +103,13 @@ class FlickrAPI {
     }
     
     private func displayImageFromFlickrBySearch(_ methodParameters: [String: AnyObject], withPageNumber: Int, completionHandler: @escaping ([[String: AnyObject]]?, Error?) -> Void  ) {
-        
         // add the page to the method's parameters
         var methodParametersWithPageNumber = methodParameters
         methodParametersWithPageNumber[Constants.FlickrParameterKeys.Page] = withPageNumber as AnyObject?
         
         // create session and request
         let session = URLSession.shared
-        let request = URLRequest(url: flickrURLFromParameters(methodParameters))
+        let request = URLRequest(url: flickrURLFromParameters(methodParametersWithPageNumber))
         
         // create network request
         let task = session.dataTask(with: request) { (data, response, error) in

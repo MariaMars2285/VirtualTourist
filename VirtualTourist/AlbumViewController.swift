@@ -75,7 +75,6 @@ class AlbumViewController: BaseViewController {
             if images.count == 0 {
                 self.showErrorAlert(title: "No Image", message: "No Images for the current location!")
             }
-            print(images)
             self.location.loaded = true
         }
        
@@ -87,6 +86,7 @@ class AlbumViewController: BaseViewController {
             for image in images {
                 context.delete(image)
             }
+            stack.save()
         }
         downloadLocationImages()
     }
@@ -94,10 +94,6 @@ class AlbumViewController: BaseViewController {
 }
 
 extension AlbumViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
@@ -173,9 +169,8 @@ extension AlbumViewController: NSFetchedResultsControllerDelegate {
 
 extension AlbumViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let image = fetchedResultsController.object(at: indexPath)
         context.delete(image)
-        
+        stack.save()
     }
 }

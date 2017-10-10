@@ -52,7 +52,6 @@ class ImageManager {
                         images.append(image)
                     }
                 }
-                print(jsons)
                 completionHandler(images, nil)
             }
         }
@@ -63,7 +62,6 @@ class ImageManager {
     func downloadImage(forImage image: Image) {
         // Get the URL for the image
         let url = image.url!
-        print(url)
         // create a queue from scratch
         let downloadQueue = DispatchQueue(label: "download", attributes: [])
         
