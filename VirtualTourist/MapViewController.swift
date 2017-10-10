@@ -88,6 +88,7 @@ class MapViewController: BaseViewController {
 extension MapViewController {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapView.deselectAnnotation(view.annotation, animated: true)
         if let annotation = view.annotation as? Location {
             if state == .delete {
                deleteAnnotation(annotation)
